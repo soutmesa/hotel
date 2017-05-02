@@ -39,7 +39,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $user = User::create($request->all());
         return redirect('users')->withMessage('User has been saved successfully');
     }
@@ -52,7 +52,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return redirect('users/profile', ['user'=>$user]);
     }
 
     /**
@@ -63,7 +64,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return redirect('users/edit', ['user'=>$user]);
     }
 
     /**
@@ -75,7 +77,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $datas = $request->all();
+        $user = User::findOrFail($id);
+        $user->update($datas);
+        return redirect('users')->withMessage('User has been updated successfully');
     }
 
     /**
@@ -86,6 +91,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect('users')->withMessage('User has been deleted');
+    }
+
+    public function changeProfile(Request $img, $id)
+    {
+
+    }
+
+    public function changePassword(Request $pwd, $id)
+    {
+
     }
 }

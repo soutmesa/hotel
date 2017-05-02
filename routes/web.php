@@ -25,17 +25,16 @@ Route::group(['middleware' => ['auth']], function() {
 		'as'=>'home',
 		'uses'=>'HomeController@index'
 	]);
-	Route::resource('/users', 'UserController@index');
-	Route::resource('/users/create', 'UserController@create');
-	Route::resource('/users/store', 'UserController@store');
-	Route::resource('/users/edit', 'UserController@edit');
-	Route::resource('/users/password', 'UserController@password');
-	Route::resource('/users/reset', 'UserController@reset');
-	Route::resource('/users/update', 'UserController@update');
-	Route::resource('/users/show', 'UserController@show');
-	Route::resource('/users/upload', 'UserController@upload');
-	Route::resource('/users/imageUpload', 'UserController@imageUpload');
-	Route::resource('/users/delete', 'UserController@destroy');
+	Route::group(['middleware'=>['isAdmin']], function(){
+		Route::resource('users', 'UserController');
+		// Route::resource('/users/create', 'UserController@create');
+		// Route::resource('/users/store', 'UserController@store');
+		// Route::resource('/users/edit', 'UserController@edit');
+		// Route::resource('/users/update', 'UserController@update');
+		// Route::resource('/users/show', 'UserController@show');
+		// Route::resource('/users/delete', 'UserController@destroy');
+	});
+	
 	Route::get('/roles',
 	[
 		'as'=>'roles.index',
