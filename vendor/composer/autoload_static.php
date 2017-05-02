@@ -282,6 +282,7 @@ class ComposerStaticInitc7dfdbd3dde59bfc7c53ebe686f1ccb1
     );
 
     public static $classMap = array (
+        'AlterTableRolesAddColCreatedUpdated' => __DIR__ . '/../..' . '/database/migrations/2017_05_02_082022_alter_table_roles_add_col_created_updated.php',
         'AlterTableUsersAddColumnDob' => __DIR__ . '/../..' . '/database/migrations/2017_04_22_021842_alter_table_users_add_column_dob.php',
         'AlterTableUsersRemoveColumnAddress' => __DIR__ . '/../..' . '/database/migrations/2017_04_22_133454_alter_table_users_remove_column_address.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',

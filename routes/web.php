@@ -25,10 +25,17 @@ Route::group(['middleware' => ['auth']], function() {
 
 	Route::get('/home', [ 'as' => 'home', 'uses' => 'HomeController@index']);
 
-	Route::group(['middleware'=>['isAdmin']], function(){
+	Route::group(['middleware' => ['isAdmin']], function(){
 
-		Route::resource('users', 'UserController');
+		Route::group(['prefix' => 'users'], function () {
+		    Route::resource('', 'UserController');
+		});
+
+		Route::group(['prefix' => 'roles'], function () {
+		    Route::resource('', 'RoleController');
+		    Route::resource('store', 'RoleController@store');
+		});
 
 	});
-	
+
 });

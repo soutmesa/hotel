@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AlterTableRolesAddColCreatedUpdated' => $baseDir . '/database/migrations/2017_05_02_082022_alter_table_roles_add_col_created_updated.php',
     'AlterTableUsersAddColumnDob' => $baseDir . '/database/migrations/2017_04_22_021842_alter_table_users_add_column_dob.php',
     'AlterTableUsersRemoveColumnAddress' => $baseDir . '/database/migrations/2017_04_22_133454_alter_table_users_remove_column_address.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
