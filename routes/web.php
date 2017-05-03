@@ -11,6 +11,11 @@
 |
 */
 
+Route::group(['prefix' => '/{locale}/'], function($locale){
+	App::setLocale($locale);
+	// App::isLocale('en')
+});
+
 Route::get('/', function () {
     if(Auth::check()) {
         return redirect('/home');
@@ -33,7 +38,10 @@ Route::group(['middleware' => ['auth']], function() {
 
 		Route::group(['prefix' => 'roles'], function () {
 		    Route::resource('', 'RoleController');
-		    Route::resource('store', 'RoleController@store');
+		    Route::get('getDatas', 'RoleController@getAllRoles');
+		    Route::get('getData/{id}', 'RoleController@getOneRole');
+		    Route::resource('putData/{id}', 'RoleController@updateRole');
+		    Route::post('store', 'RoleController@store');
 		});
 
 	});

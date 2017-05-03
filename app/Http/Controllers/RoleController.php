@@ -5,9 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\RoleRequest;
 use App\Role;
+use App\Repositories\RoleRepository;
 
 class RoleController extends Controller
 {
+    /**
+     * @var $role
+     */
+    private $role;
+
+    /**
+     * TaskController constructor.
+     *
+     * @param App\Repositories\RoleRepository $role
+     */
+    public function __construct(RoleRepository $role) 
+    {
+        $this->role = $role;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +31,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::get();
-        return view('roles.index', ['roles' => $roles]);
+        // $roles = Role::get();
+        // return view('roles.index', ['roles' => $roles]);
+        return view('roles.index');
     }
 
     /**
@@ -85,5 +102,64 @@ class RoleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    // methods implements from interface
+
+    public function getAllRoles()
+    {
+        $roles = $this->role->getAll();
+        return json_encode($roles);
+    }
+
+    public function getOneRole($id)
+    {
+        $role = $this->role->getById($id);
+        return json_encode($role);
+    }
+
+    /**
+     * Store a role
+     *
+     * @var array $attributes
+     *
+     * @return mixed
+     */
+    public function postStoreRole(Request $request)
+    {
+        $attributes = $request->only(['description']);
+        $this->role->create($attributes);
+        return redirect()->route('roles.index');
+    }
+
+    /**
+     * Update a role
+     *
+     * @var integer $id
+     * @var array   $attributes
+     *
+     * @return mixed
+     */
+    public function updateRole($id, Request $request)
+    {
+        $datas = $request->all();
+        $this->role->update($id, $datas);
+
+        $role = $this->role->getById($id);
+        return json_encode($role);
+    }
+
+    /**
+     * Delete a role
+     *
+     * @var integer $id
+     *
+     * @return mixed
+     */
+    public function postDeleteRole($id)
+    {
+        $this->role->delete($id);
+        return redirect()->route('roles.index');
     }
 }
