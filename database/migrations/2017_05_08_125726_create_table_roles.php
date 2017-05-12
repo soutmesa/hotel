@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterTableUsersRemoveColumnAddress extends Migration
+class CreateTableRoles extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AlterTableUsersRemoveColumnAddress extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('address');
+        Schema::create('roles', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('name', 50);
+            $table->text('description');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AlterTableUsersRemoveColumnAddress extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->text('address');
-        });
+        Schema::dropIfExists('roles');
     }
 }

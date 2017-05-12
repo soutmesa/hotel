@@ -16,15 +16,42 @@
   @include ('layouts.partials.header')
   <!-- Left side column. contains the logo and sidebar -->
   @include ('layouts.partials.sidebar')
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Dashboard
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section>
 
-  @yield ('content')
+    <section class="content-header">
+      @if(Session::get('message'))
+        <div class="alert alert-warning">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <p>{{ Session::get('message') }}</p>
+        </div>
+        <script type="text/javascript">
+          window.setTimeout(function() {
+            $(".alert.alert-warning").fadeTo(500, 0).slideUp(500, function(){
+              $(this).remove(); 
+            });
+          }, 2000);
+        </script>
+      @endif
+    </section>
+    @yield ('content')
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.8
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2017-2018 <a href="{{ url('home') }}">Hotel ROADA</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

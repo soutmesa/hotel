@@ -38,192 +38,175 @@ Home | users
 @endsection
 
 @section ('content')
+  <!-- Main content -->
+  <section class="content">
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Form Create User
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">User</a></li>
-        <li class="active">Create</li>
-      </ol>
-    </section>
+    <!-- SELECT2 EXAMPLE -->
+    <div class="box box-default">
+      <div class="box-header with-border">
+        <h3 class="box-title">Create</h3>
 
-    <!-- Main content -->
-    <section class="content">
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+        </div>
+      </div>
 
-      <!-- SELECT2 EXAMPLE -->
-      <div class="box box-default">
-        <div class="box-header with-border">
-          <h3 class="box-title">Create</h3>
+      {{ Form::open(['url'=>'users/store']) }}
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              {{ Form::label('username', 'User Name:') }}
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-user"></i>
+                </div>
+                {{ Form::text('username', null, ['class'=>'form-control', 'placeholder'=>'User Name']) }}
+              </div>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-md-6">
+            <div class="form-group">
+              {{ Form::label('firstname', 'First Name:') }}
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-user"></i>
+                </div>
+                {{ Form::text('firstname', null, ['class'=>'form-control', 'placeholder'=>'First Name']) }}
+              </div>
+            </div>
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
 
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              {{ Form::label('lastname', 'Last Name:') }}
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-user"></i>
+                </div>
+                {{ Form::text('lastname', null, ['class'=>'form-control', 'placeholder'=>'Last Name']) }}
+              </div>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-md-6">
+            <div class="form-group">
+              {{ Form::label('email', 'Email:') }}
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-envelope"></i>
+                </div>
+                {{ Form::email('email', null, ['class'=>'form-control', 'placeholder'=>'Email']) }}
+              </div>
+            </div>
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              {{ Form::label('password', 'Password:') }}
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-lock"></i>
+                </div>
+                {{ Form::password('password', ['class'=>'form-control', 'placeholder'=>'Password']) }}
+              </div>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-md-6">
+            <div class="form-group">
+              {{ Form::label('password_confirmation', 'Confirm Password:') }}
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-lock"></i>
+                </div>
+                {{ Form::password('password_confirmation', ['class'=>'form-control', 'placeholder'=>'Confirm Password']) }}
+              </div>
+            </div>
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              {{ Form::label('gender', 'Gender:') }}
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-lock"></i>
+                </div>
+                {{Form::select('gender', array('female'=>'Female', 'male'=>'Male'), null, ['class'=>'form-control select2'])}}
+              </div>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-md-6">
+            <!-- Date -->
+            <div class="form-group">
+              {{ Form::label('dob', 'Birth Date:')}}
+              <div class="input-group date">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                {{ Form::text('dob', '', ['class'=>'form-control pull-right', 'id'=>'datepicker']) }}
+              </div>
+              <!-- /.input group -->
+            </div>
+            <!-- /.form group -->
           </div>
         </div>
 
-        {{ Form::open(['url'=>'users/store']) }}
-        <!-- /.box-header -->
-        <div class="box-body">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                {{ Form::label('username', 'User Name:') }}
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-user"></i>
-                  </div>
-                  {{ Form::text('username', null, ['class'=>'form-control', 'placeholder'=>'User Name']) }}
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              {{ Form::label('role_id', 'Role:') }}
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-lock"></i>
                 </div>
+                <select name="role_id" class="select2 form-control">
+                  @foreach($roles as $role)
+                  <option value="{{ $role->id }}">{{ $role->name }}</option>
+                  @endforeach
+                </select>
+                <!-- {{Form::select('role_id', $roles, null, ['class'=>'form-control select2'])}} -->
               </div>
-            </div>
-            <!-- /.col -->
-            <div class="col-md-6">
-              <div class="form-group">
-                {{ Form::label('firstname', 'First Name:') }}
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-user"></i>
-                  </div>
-                  {{ Form::text('firstname', null, ['class'=>'form-control', 'placeholder'=>'First Name']) }}
-                </div>
-              </div>
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                {{ Form::label('lastname', 'Last Name:') }}
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-user"></i>
-                  </div>
-                  {{ Form::text('lastname', null, ['class'=>'form-control', 'placeholder'=>'Last Name']) }}
-                </div>
-              </div>
-            </div>
-            <!-- /.col -->
-            <div class="col-md-6">
-              <div class="form-group">
-                {{ Form::label('email', 'Email:') }}
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-envelope"></i>
-                  </div>
-                  {{ Form::email('email', null, ['class'=>'form-control', 'placeholder'=>'Email']) }}
-                </div>
-              </div>
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                {{ Form::label('password', 'Password:') }}
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-lock"></i>
-                  </div>
-                  {{ Form::password('password', ['class'=>'form-control', 'placeholder'=>'Password']) }}
-                </div>
-              </div>
-            </div>
-            <!-- /.col -->
-            <div class="col-md-6">
-              <div class="form-group">
-                {{ Form::label('password_confirmation', 'Confirm Password:') }}
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-lock"></i>
-                  </div>
-                  {{ Form::password('password_confirmation', ['class'=>'form-control', 'placeholder'=>'Confirm Password']) }}
-                </div>
-              </div>
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                {{ Form::label('gender', 'Gender:') }}
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-lock"></i>
-                  </div>
-                  {{Form::select('gender', array('female'=>'Female', 'male'=>'Male'), null, ['class'=>'form-control select2'])}}
-                </div>
-              </div>
-            </div>
-            <!-- /.col -->
-            <div class="col-md-6">
-              <!-- Date -->
-              <div class="form-group">
-                {{ Form::label('dob', 'Birth Date:')}}
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  {{ Form::text('dob', '', ['class'=>'form-control pull-right', 'id'=>'datepicker']) }}
-                </div>
-                <!-- /.input group -->
-              </div>
-              <!-- /.form group -->
             </div>
           </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                {{ Form::label('role_id', 'Role:') }}
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-lock"></i>
-                  </div>
-                  <select name="role_id" class="select2 form-control">
-                    @foreach($roles as $role)
-                    <option value="{{ $role->id }}">{{ $role->name }}</option>
-                    @endforeach
-                  </select>
-                  <!-- {{Form::select('role_id', $roles, null, ['class'=>'form-control select2'])}} -->
-                </div>
-              </div>
-            </div>
-            <!-- /.col -->
-            <div class="col-md-6">
-              <!-- Date -->
-              <div class="form-group">
-                {{ Form::label('pob', 'Place of Birth:')}}
-                {{ Form::textarea('pob', '', ['class'=>'form-control', 'rows'=>'2']) }}
-              <!-- /.form group -->
-            </div>
+          <!-- /.col -->
+          <div class="col-md-6">
+            <!-- Date -->
+            <div class="form-group">
+              {{ Form::label('pob', 'Place of Birth:')}}
+              {{ Form::textarea('pob', '', ['class'=>'form-control', 'rows'=>'2']) }}
+            <!-- /.form group -->
           </div>
-
         </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
-          {{ Form::submit('Create', ['class'=>'btn btn-primary']) }}
-        </div>
-        <!-- /.box -->
-        {{ Form::close() }}
 
       </div>
+      <!-- /.box-body -->
+      <div class="box-footer">
+        {{ Form::submit('Create', ['class'=>'btn btn-primary']) }}
+      </div>
       <!-- /.box -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+      {{ Form::close() }}
+
+    </div>
+    <!-- /.box -->
+  </section>
+  <!-- /.content -->
 
 @endsection
 

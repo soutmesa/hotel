@@ -38,79 +38,62 @@ Home | roles - new
 @endsection
 
 @section ('content')
+  <!-- Main content -->
+  <section class="content">
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Form Create User
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">User</a></li>
-        <li class="active">Create</li>
-      </ol>
-    </section>
+    <!-- SELECT2 EXAMPLE -->
+    <div class="box box-default">
+      <div class="box-header with-border">
+        <h3 class="box-title">Create</h3>
 
-    <!-- Main content -->
-    <section class="content">
-
-      <!-- SELECT2 EXAMPLE -->
-      <div class="box box-default">
-        <div class="box-header with-border">
-          <h3 class="box-title">Create</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-          </div>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
         </div>
+      </div>
 
-        {{ Form::open(['url'=>'roles/store']) }}
-        <!-- /.box-header -->
-        <div class="box-body">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                {{ Form::label('name', 'Role Name:') }}
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-cog"></i>
-                  </div>
-                  {{ Form::text('name', old('name'), ['class'=>'form-control', 'placeholder'=>'Role Name']) }}
+      {{ Form::open(['url'=>'roles/store']) }}
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+              {{ Form::label('name', 'Role Name:') }}
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-cog"></i>
                 </div>
-                <span class="form-control-feedback"></span>
-                @if ($errors->has('name'))
-                  <span class="help-block">
-                    <strong>{{ $errors->first('name') }}</strong>
-                  </span>
-                @endif
+                {{ Form::text('name', old('name'), ['class'=>'form-control', 'placeholder'=>'Role Name']) }}
               </div>
-            </div>
-            <!-- /.col -->
-            <div class="col-md-6">
-            {{ Form::label('description', 'Description:') }}
-              <div class="form-group">
-                {{ Form::textarea('description', old('description'), ['class'=>'form-control', 'rows'=>'2']) }}
-              </div>
+              <span class="form-control-feedback"></span>
+              @if ($errors->has('name'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('name') }}</strong>
+                </span>
+              @endif
             </div>
           </div>
-          <!-- /.row -->
+          <!-- /.col -->
+          <div class="col-md-6">
+          {{ Form::label('description', 'Description:') }}
+            <div class="form-group">
+              {{ Form::textarea('description', old('description'), ['class'=>'form-control', 'rows'=>'2']) }}
+            </div>
+          </div>
         </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
-          {{ Form::submit('Create', ['class'=>'btn btn-primary']) }}
-        </div>
-        <!-- /.box -->
-        {{ Form::close() }}
-
+        <!-- /.row -->
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer">
+        {{ Form::submit('Create', ['class'=>'btn btn-primary']) }}
       </div>
       <!-- /.box -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+      {{ Form::close() }}
+
+    </div>
+    <!-- /.box -->
+  </section>
+  <!-- /.content -->
 
 @endsection
 

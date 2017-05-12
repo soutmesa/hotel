@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\RoleRequest;
+use App\Http\Requests\RoleUpdateRequest;
 use App\Role;
 use App\Repositories\RoleRepository;
 
@@ -54,9 +55,9 @@ class RoleController extends Controller
      */
     public function store(RoleRequest $request)
     {
-        $datas = $request->all();
-        Role::create($datas);
-        return redirect('roles')->withMessage('Role has been created successfully');
+        // $datas = $request->all();
+        // Role::create($datas);
+        // return redirect('roles')->withMessage('Role has been created successfully');
     }
 
     /**
@@ -128,9 +129,10 @@ class RoleController extends Controller
      */
     public function postStoreRole(Request $request)
     {
-        $attributes = $request->only(['description']);
-        $this->role->create($attributes);
-        return redirect()->route('roles.index');
+        $datas = $request->all();
+        $getId = $this->role->create($datas)->id;
+        $role = $this->role->getById($getId);
+        return json_encode($role);
     }
 
     /**
@@ -141,7 +143,7 @@ class RoleController extends Controller
      *
      * @return mixed
      */
-    public function updateRole($id, Request $request)
+    public function updateRole($id, RoleUpdateRequest $request)
     {
         $datas = $request->all();
         $this->role->update($id, $datas);
@@ -157,9 +159,13 @@ class RoleController extends Controller
      *
      * @return mixed
      */
-    public function postDeleteRole($id)
+    public function deleteRole($id)
     {
-        $this->role->delete($id);
-        return redirect()->route('roles.index');
+        if( $this->role->delete($id) )
+        {
+            return 'success';
+        }else{
+            return 'fail';
+        }
     }
 }

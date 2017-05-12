@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterTableUsersAddColumnDob extends Migration
+class CreateTableRoomprice extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AlterTableUsersAddColumnDob extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('dob', 50)->after('gender');
+        Schema::create('roomprice', function (Blueprint $table) {
+            $table->increments('room_price_id');
+            $table->string('room_price_name')->unique();
+            $table->integer('room_price');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AlterTableUsersAddColumnDob extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('dob');
-        });
+        Schema::dropIfExists('roomprice');
     }
 }

@@ -11,17 +11,13 @@
 |
 */
 
-Route::group(['prefix' => '/{locale}/'], function($locale){
-	App::setLocale($locale);
+// Route::group(['prefix' => '/{locale}/'], function($locale){
+	// App::setLocale($locale);
 	// App::isLocale('en')
-});
+// });
 
 Route::get('/', function () {
-    if(Auth::check()) {
-        return redirect('/home');
-    } else {
-        return view('auth.login');
-    }
+    return Auth::check()? redirect('/home') : redirect('auth.login');
 });
 
 Auth::routes();
@@ -40,8 +36,9 @@ Route::group(['middleware' => ['auth']], function() {
 		    Route::resource('', 'RoleController');
 		    Route::get('getDatas', 'RoleController@getAllRoles');
 		    Route::get('getData/{id}', 'RoleController@getOneRole');
-		    Route::resource('putData/{id}', 'RoleController@updateRole');
-		    Route::post('store', 'RoleController@store');
+		    Route::put('putData/{id}', 'RoleController@updateRole');
+		    Route::get('delData/{id}', 'RoleController@deleteRole');
+		    Route::post('store', 'RoleController@postStoreRole');
 		});
 
 	});

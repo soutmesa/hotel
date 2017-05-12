@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterTableRolesAddColCreatedUpdated extends Migration
+class CreateTableCoupons extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class AlterTableRolesAddColCreatedUpdated extends Migration
      */
     public function up()
     {
-        Schema::table('roles', function (Blueprint $table) {
+        Schema::create('coupons', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('coupon_name', 10)->unique();
+            $table->string('coupon_discount', 100);
             $table->timestamps();
         });
     }
@@ -25,8 +28,6 @@ class AlterTableRolesAddColCreatedUpdated extends Migration
      */
     public function down()
     {
-        Schema::table('roles', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('coupons');
     }
 }

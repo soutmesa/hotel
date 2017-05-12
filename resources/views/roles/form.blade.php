@@ -1,5 +1,5 @@
 <div class="example-modal">
-  <div class="modal">
+  <div class="modal fade in">
     <div class="modal-dialog">
       <div class="modal-content">
       {{ Form::open(['url'=>'','class'=>'form-group']) }}
@@ -22,9 +22,10 @@
         <div class="modal-body">
           {{ Form::hidden('id', null) }}
           {{ Form::label('name', 'Name : ')}}
-          {{ Form::text('name', null, ['class'=>'form-control']) }}
+          {{ Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Role Name']) }}
           {{ Form::label('description', 'Description : ')}}
-          {{ Form::textarea('description', old('description'), ['class'=>'form-control', 'rows'=>'2']) }}
+          {{ Form::textarea('description', old('description'), ['class'=>'form-control', 'rows'=>'2', 'placeholder'=>'Description']) }}
+          
         </div>
 
         <div class="modal-footer">
