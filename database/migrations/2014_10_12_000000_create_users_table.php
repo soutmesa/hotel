@@ -24,8 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('gender', 10);
             $table->string('dob', 50);
-            $table->string('points', 100);
-            $table->string('profile');
+            $table->string('points', 100)->nullable();
+            $table->string('profile')->nullable();
             $table->text('pob');
             $table->rememberToken();
             $table->timestamps();
