@@ -29,7 +29,7 @@ class UserRequest extends Request
             'username' => 'required | unique:users | min:3 | max:50',
             'firstname' => 'required | min:3 | max:50',
             'lastname' => 'required | min:3 | max:50',
-            'email' => 'required | unique:mangas',
+            'email' => 'required | unique:users',
             'password' => 'required | confirmed | min:3',
             'gender' => 'required',
         ];

@@ -40,7 +40,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        // dd($request->all());
+        dd($request->all());
         $user = User::create($request->all());
         return redirect('users')->withMessage('User has been saved successfully');
     }
