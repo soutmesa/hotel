@@ -26,7 +26,7 @@ class UserRequest extends Request
     {
         return [
             'role_id' => 'required',
-            'username' => 'required | unique:users | min:3 | max:50',
+            'username' => 'required | min:3 | max:50 | unique:users',
             'firstname' => 'required | min:3 | max:50',
             'lastname' => 'required | min:3 | max:50',
             'email' => 'required | unique:users',
