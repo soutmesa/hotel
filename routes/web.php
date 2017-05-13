@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth']], function() {
 
 		Route::group(['prefix' => 'users'], function () {
 		    Route::resource('', 'UserController');
+		    Route::post('store', 'UserController@store');
 		});
 
 		Route::group(['prefix' => 'roles'], function () {

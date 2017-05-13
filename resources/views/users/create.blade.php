@@ -43,6 +43,15 @@ Home | users
 
     <!-- SELECT2 EXAMPLE -->
     <div class="box box-default">
+      @if( Session::get('errors') )
+      <div class="alert alert-warning">
+        <ol>
+        @foreach($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+        </ol>
+      </div>
+      @endif
       <div class="box-header with-border">
         <h3 class="box-title">Create</h3>
 

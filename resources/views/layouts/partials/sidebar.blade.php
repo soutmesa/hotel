@@ -26,7 +26,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
+        <li class="{{setMenuActive('home')}} treeview">
           <a href="{{ url('home') }}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
@@ -86,29 +86,22 @@
             <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="{{ setMenuActive('users') }} {{ setMenuActive('users/create') }} treeview">
           <a href="#">
-            <i class="fa fa-edit"></i> <span>Users</span>
+            <i class="fa fa-users"></i> <span>Users</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('users/') }}"><i class="fa fa-circle-o"></i> All users</a></li>
-            <li><a href="{{ url('users/create') }}"><i class="fa fa-circle-o"></i> Add new</a></li>
+            <li class="{{ setMenuActive('users') }}"><a href="{{ url('users/') }}"><i class="fa fa-circle-o"></i> All users</a></li>
+            <li class="{{ setMenuActive('users/create') }}"><a href="{{ url('users/create') }}"><i class="fa fa-circle-o"></i> Add new</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-table"></i> <span>Tables</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+        <li class="{{setMenuActive('roles')}} treeview">
+          <a href="{{ url('roles') }}">
+            <i class="fa fa-cogs"></i> <span>Roles</span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-          </ul>
         </li>
         <li>
           <a href="pages/calendar.html">
