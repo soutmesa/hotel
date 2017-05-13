@@ -60,7 +60,7 @@ Home | users
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->gender }}</td>
                 <td>{{ $user->email }}</td>
-                <td>{{ $user->role['name'] }}</td>
+                <td>{{ $user->role['name']?$user->role['name'] : 'N/A' }}</td>
                 <td>{{ $user->created_at }}</td>
                 <td>{{ $user->updated_at }}</td>
                 <td align="center"><a href="#">edit</a>@if(Auth::user()->id != $user->id) | <a href="#">delete</a> @endif</td>
