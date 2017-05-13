@@ -39,7 +39,6 @@ Home | users
     <div class="row">
       <div class="col-xs-12">
         <!-- /.box -->
-
         <div class="box">
           <div class="box-header">
             <h3 class="box-title"><small><a href="#" class="fa fa-plus"></a></small> Add New</h3>
@@ -60,16 +59,6 @@ Home | users
               <tbody>
               <!-- get datas from ajax to show here-->
               </tbody>
-              <tfoot>
-              <!-- <tr>
-                <th>Id</th>
-                <th>Role Name</th>
-                <th>Description</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-                <th align="center">Actions</th>
-              </tr> -->
-              </tfoot>
             </table>
           </div>
           <!-- /.box-body -->

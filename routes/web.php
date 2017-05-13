@@ -11,13 +11,9 @@
 |
 */
 
-// Route::group(['prefix' => '/{locale}/'], function($locale){
-	// App::setLocale($locale);
-	// App::isLocale('en')
-// });
-
 Route::get('/', function () {
-    return Auth::check()? redirect('/home') : redirect('auth.login');
+    // return Auth::check()? redirect('/home') : redirect('auth.login');
+    return Auth::check()? redirect('/home') : redirect('login');
 });
 
 Auth::routes();
