@@ -40,4 +40,7 @@ Route::group(['middleware' => ['auth']], function() {
 
 	});
 
+	Route::get('users/account/{id}', 'UserController@publicUserProfile');
+	Route::get('users/account/edit/{id}', 'UserController@publicUserEdit');
+
 });

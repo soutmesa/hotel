@@ -106,4 +106,22 @@ class UserController extends Controller
     {
 
     }
+
+    public function publicUserProfile($id)
+    {
+        $profile = User::findOrFail($id);
+        return view('users.profile', ['profile' => $profile]);
+    }
+
+    public function publicUserEdit($id)
+    {
+        $curr_user_id = Auth::id();
+        
+        if($curr_user_id == $id)
+        {
+            return redirect()->back()->withMessage('You do not have permission to access this page!!');
+        }
+
+        return redirect()->back()->withMessage('You do not have permission to access this page!!');
+    }
 }
